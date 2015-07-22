@@ -1,4 +1,5 @@
-|pypi|
+.. image:: https://badge.fury.io/py/django-boolean-switch.svg
+    :target: http://badge.fury.io/py/django-boolean-switch
 
 =====
 django-boolean-switch
@@ -21,6 +22,8 @@ Usage
     url(r'^admin/', include('boolean_switch.urls')),
 
 3. Use mixin to modify you admin output::
+
+    from boolean_switch.admin import AdminBooleanMixin
 
     class MyModelAdmin(AdminBooleanMixin, admin.ModelAdmin):
         list_display = ['sometitle', 'somebooleanfiled']
