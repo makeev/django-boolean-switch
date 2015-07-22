@@ -21,7 +21,7 @@ Usage
         'boolean_switch',
     )
 
-3. Include the polls URLconf in your project urls.py like this::
+3. Include the boolean_switch URLconf in your project urls.py like this::
 
     url(r'^admin/', include('boolean_switch.urls')),
     ...
