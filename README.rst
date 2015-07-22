@@ -1,4 +1,5 @@
-|pypi|
+.. image:: https://badge.fury.io/py/django-boolean-switch.svg
+    :target: http://badge.fury.io/py/django-boolean-switch
 
 =====
 django-boolean-switch
