@@ -1,3 +1,5 @@
+|pypi|
+
 =====
 django-boolean-switch
 =====
