@@ -18,7 +18,7 @@ Usage
 
     url(r'^admin/', include('boolean_switch.urls')),
 
-3. Use mixin to modify you admin output.
+3. Use mixin to modify you admin output::
 
     class MyModelAdmin(AdminBooleanMixin, admin.ModelAdmin):
         list_display = ['sometitle', 'somebooleanfiled']
