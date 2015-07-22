@@ -24,6 +24,8 @@ Usage
 3. Include the polls URLconf in your project urls.py like this::
 
     url(r'^admin/', include('boolean_switch.urls')),
+    ...
+    url(r'^admin/', include(admin.site.urls)),
 
 4. Use mixin to modify you admin output::
 
