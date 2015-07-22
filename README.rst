@@ -20,8 +20,8 @@ Usage
 
 3. Use mixin to modify you admin output.
 
-	class MyModelAdmin(AdminBooleanMixin, admin.ModelAdmin):
-	    list_display = ['sometitle', 'somebooleanfiled']
+    class MyModelAdmin(AdminBooleanMixin, admin.ModelAdmin):
+        list_display = ['sometitle', 'somebooleanfiled']
 
 4. Now you can change boolean fields flag from list view in one click!
 
