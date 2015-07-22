@@ -1,0 +1,17 @@
+.DS_Store
+._*
+
+# IDE system files
+.ropeproject
+.vim
+.idea
+.tags
+.env
+*.sublime-workspace
+*.sublime-project
+
+# Temporary files
+*.py[oc]
+*.sw[opn]
+*~
+
