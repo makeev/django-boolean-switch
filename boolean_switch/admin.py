@@ -1,5 +1,10 @@
 from django.db.models import BooleanField
-from django.core.exceptions import FieldDoesNotExist
+try:
+    # Django 1.8
+    from django.core.exceptions import FieldDoesNotExist
+except ImportError:
+    # Django 1.7
+    from django.db.models.fields import FieldDoesNotExist
 
 
 def boolean_switch_field(field):
