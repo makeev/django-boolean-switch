@@ -24,6 +24,6 @@ def switch(request, url):
     if request.is_ajax():
         return JsonResponse({'object_id': object.pk, 'field': field, 'value': getattr(object, field)})
     else:
-        msg = _(u'флаг %(field)s был изменен для %(object)s') % {'field': field, 'object': object}
+        msg = _(u'flag %(field)s was changed for %(object)s') % {'field': field, 'object': object}
         messages.success(request, msg)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
