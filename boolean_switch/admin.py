@@ -51,4 +51,5 @@ class AdminBooleanMixin(object):
         returned by get_list_display().
         """
         list_display = super(AdminBooleanMixin, self).get_list_display_links(request, list_display)
-        return [list_display]
+        return list_display if isinstance(list_display, list) else [list_display]
+
