@@ -15,7 +15,8 @@ def switch(request, url):
     model = get_model(app_label, model_name)
 
     object = get_object_or_404(model, pk=object_id)
-    if not request.user.has_perm('%s.change_%s' % (app_label, model.__name__), object):
+    perm_str = '%s.change_%s' % (app_label, model.__name__)
+    if not request.user.has_perm(perm_str.lower()):
         raise PermissionDenied
 
     setattr(object, field, getattr(object, field) == 0)
