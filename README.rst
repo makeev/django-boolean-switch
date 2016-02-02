@@ -36,3 +36,4 @@ Usage
 
 5. Now you can change boolean fields flag from list view in one click!
 
+.. image:: https://github.com/makeev/django-boolean-switch/blob/master/example.gif
