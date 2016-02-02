@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from django.db.models import get_model
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
@@ -12,10 +11,18 @@ def switch(request, url):
     Set/clear boolean field value for model object
     """
     app_label, model_name, object_id, field = url.split('/')
-    model = get_model(app_label, model_name)
+    try:
+        # django >= 1.7
+        from django.apps import apps
+        model = apps.get_model(app_label, model_name)
+    except ImportError:
+        # django < 1.7
+        from django.db.models import get_model
+        model = get_model(app_label, model_name)
 
     object = get_object_or_404(model, pk=object_id)
     perm_str = '%s.change_%s' % (app_label, model.__name__)
+    # check only model
     if not request.user.has_perm(perm_str.lower()):
         raise PermissionDenied
 
