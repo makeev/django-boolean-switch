@@ -12,7 +12,7 @@ def boolean_switch_field(field):
     def _f(self):
         v = getattr(self, field.name)
         url = '%d/%s/switch/' % (self._get_pk_val(), field.name)
-        return '<a href ="%s" class="boolean_switch"><img src="/static/admin/img/icon-%s.gif" alt="%d" /></a>' % (url, ('no','yes')[v], v)
+        return '<a href ="%s" class="boolean_switch"><img src="/static/admin/img/icon-%s.svg" alt="%d" /></a>' % (url, ('no','yes')[v], v)
     _f.short_description = field.verbose_name
     _f.allow_tags = True
     return _f
