@@ -36,3 +36,4 @@ Usage
 
 5. Now you can change boolean fields flag from list view in one click!
 
+.. image:: http://s30.postimg.org/hqngbv1up/ezgif_com_resize.gif
