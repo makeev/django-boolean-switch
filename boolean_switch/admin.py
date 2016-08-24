@@ -43,13 +43,3 @@ class AdminBooleanMixin(object):
                 pass
             list_display.append(field_name)
         return list_display
-
-    def get_list_display_links(self, request, list_display):
-        """
-        Return a sequence containing the fields to be displayed as links
-        on the changelist. The list_display parameter is the list of fields
-        returned by get_list_display().
-        """
-        list_display = super(AdminBooleanMixin, self).get_list_display_links(request, list_display)
-        return list_display if isinstance(list_display, list) else [list_display]
-
