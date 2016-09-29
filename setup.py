@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-boolean-switch',
-    version='0.2.8.3',
+    version='0.2.8.4',
     packages=['boolean_switch'],
     include_package_data=True,
     description='Django app to switch boolean fields from list view',
