@@ -1,5 +1,7 @@
 from django.db.models import BooleanField
 from django.forms import widgets
+from django import get_version
+from distutils.version import StrictVersion
 try:
     # Django 1.8
     from django.core.exceptions import FieldDoesNotExist
@@ -8,11 +10,18 @@ except ImportError:
     from django.db.models.fields import FieldDoesNotExist
 
 
+img_extension = 'gif'
+if StrictVersion(get_version()) > '1.9':
+    img_extension = 'svg'
+
+
 def boolean_switch_field(field):
     def _f(self):
         v = getattr(self, field.name)
         url = '%d/%s/switch/' % (self._get_pk_val(), field.name)
-        return '<a href ="%s" class="boolean_switch"><img src="/static/admin/img/icon-%s.gif" alt="%d" /></a>' % (url, ('no','yes')[v], v)
+        return '<a href ="%s" class="boolean_switch"><img src="/static/admin/img/icon-%s.%s" alt="%d" /></a>' % (
+            url, ('no','yes')[v], img_extension, v
+        )
     _f.short_description = field.verbose_name
     _f.allow_tags = True
     return _f
