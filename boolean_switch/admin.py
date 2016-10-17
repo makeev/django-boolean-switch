@@ -23,6 +23,7 @@ def boolean_switch_field(field):
             url, ('no','yes')[v], img_extension, v
         )
     _f.short_description = field.verbose_name
+    _f.admin_order_field = field.name
     _f.allow_tags = True
     return _f
 
