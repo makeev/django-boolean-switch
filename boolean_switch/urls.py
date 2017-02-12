@@ -12,7 +12,7 @@ if StrictVersion(get_version()) > StrictVersion('1.8'):
         url(r'^(?P<url>.*)/switch/$', switch, name='switch'),
     ]
 else:
-	from django.conf.urls import patterns
+    from django.conf.urls import patterns
 
     urlpatterns = patterns('',
         url(r'^(?P<url>.*)/switch/$', switch, name='switch'),
