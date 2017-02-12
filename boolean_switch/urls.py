@@ -1,8 +1,6 @@
 from django import get_version
 from distutils.version import StrictVersion
-from django.conf.urls import patterns, include, url
-from django.conf import settings
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf.urls import include, url
 
 from django.contrib import admin
 admin.autodiscover()
@@ -14,6 +12,8 @@ if StrictVersion(get_version()) > StrictVersion('1.8'):
         url(r'^(?P<url>.*)/switch/$', switch, name='switch'),
     ]
 else:
+	from django.conf.urls import patterns
+
     urlpatterns = patterns('',
         url(r'^(?P<url>.*)/switch/$', switch, name='switch'),
     )
