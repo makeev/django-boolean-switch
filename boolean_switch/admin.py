@@ -2,6 +2,9 @@ from django.db.models import BooleanField
 from django.forms import widgets
 from django import get_version
 from distutils.version import StrictVersion
+from django.utils.html import mark_safe
+
+
 try:
     # Django 1.8
     from django.core.exceptions import FieldDoesNotExist
@@ -19,9 +22,9 @@ def boolean_switch_field(field):
     def _f(self):
         v = getattr(self, field.name)
         url = '%d/%s/switch/' % (self._get_pk_val(), field.name)
-        return '<a href ="%s" class="boolean_switch"><img src="/static/admin/img/icon-%s.%s" alt="%d" /></a>' % (
+        return mark_safe('<a href ="%s" class="boolean_switch"><img src="/static/admin/img/icon-%s.%s" alt="%d" /></a>' % (
             url, ('no','yes')[v], img_extension, v
-        )
+        ))
     _f.short_description = field.verbose_name
     _f.admin_order_field = field.name
     _f.allow_tags = True
