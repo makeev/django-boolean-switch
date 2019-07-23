@@ -1,8 +1,10 @@
-from django.db.models import BooleanField
-from django.forms import widgets
-from django import get_version
 from distutils.version import StrictVersion
+
+from django import get_version
+from django.forms import widgets
+from django.db.models import BooleanField
 from django.utils.html import mark_safe
+from django.contrib.staticfiles.templatetags.staticfiles import static
 
 
 try:
@@ -11,7 +13,6 @@ try:
 except ImportError:
     # Django 1.7
     from django.db.models.fields import FieldDoesNotExist
-
 
 img_extension = 'gif'
 if StrictVersion(get_version()) > '1.9':
@@ -22,8 +23,9 @@ def boolean_switch_field(field):
     def _f(self):
         v = getattr(self, field.name)
         url = '%d/%s/switch/' % (self._get_pk_val(), field.name)
-        return mark_safe('<a href ="%s" class="boolean_switch"><img src="/static/admin/img/icon-%s.%s" alt="%d" /></a>' % (
-            url, ('no','yes')[v], img_extension, v
+        img_path = static('admin/img/icon-%s.%s' % (('no','yes')[v], img_extension))
+        return mark_safe('<a href ="%s" class="boolean_switch"><img src="%s" alt="%d" /></a>' % (
+            url, img_path, v
         ))
     _f.short_description = field.verbose_name
     _f.admin_order_field = field.name
