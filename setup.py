@@ -14,6 +14,7 @@ setup(
     include_package_data=True,
     description='Django app to switch boolean fields from list view',
     long_description=README,
+    long_description_content_type='text/markdown',
     url='https://github.com/makeev/django-boolean-switch',
     author='Mikhail Makeev',
     author_email='mihail.makeev@gmail.com',
