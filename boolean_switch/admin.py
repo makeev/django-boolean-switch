@@ -4,7 +4,10 @@ from django import get_version
 from django.forms import widgets
 from django.db.models import BooleanField
 from django.utils.html import mark_safe
-from django.contrib.staticfiles.templatetags.staticfiles import static
+try:
+    from django.contrib.staticfiles.templatetags.staticfiles import static
+except ImportError:
+    from django.templatetags.static import static
 
 
 try:
