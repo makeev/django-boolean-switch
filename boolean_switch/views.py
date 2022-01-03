@@ -3,7 +3,8 @@ from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404
 from django.core.exceptions import PermissionDenied
 from django.contrib import messages
-from django.utils.translation import ugettext as _
+from django.utils.translation import gettext as _
+from .utils import is_ajax
 
 
 def switch(request, url):
@@ -29,9 +30,16 @@ def switch(request, url):
     setattr(object, field, getattr(object, field) == 0)
     object.save()
 
-    if request.is_ajax():
+    try:
+        # might be deprecated
+        isAjaxRequest = request.is_ajax()
+    except AttributeError:
+        isAjaxRequest = is_ajax(request)
+
+    if isAjaxRequest:
         return JsonResponse({'object_id': object.pk, 'field': field, 'value': getattr(object, field)})
     else:
-        msg = _(u'flag %(field)s was changed for %(object)s') % {'field': field, 'object': object}
+        msg = _(u'flag %(field)s was changed for %(object)s') % {
+            'field': field, 'object': object}
         messages.success(request, msg)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
